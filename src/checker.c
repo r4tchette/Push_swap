@@ -1,30 +1,27 @@
 #include <stdio.h>
-#include "deque.h"
+#include "pushswap.h"
 
-void	swap(t_deque *deq)
+int		command(t_deque *a, t_deque *b, char *com)
 {
-	int	first;
-	int	second;
-
-	first = pop_front(deq);
-	second = pop_front(deq);
-	push_front(deq, first);
-	push_front(deq, second);
-}
-
-void	push(t_deque *src, t_deque *dst)
-{
-	push_front(dst, pop_front(src));
-}
-
-void	rotate(t_deque *deq)
-{
-	push_back(deq, pop_front(deq));
-}
-
-void	reverse_rotate(t_deque *deq)
-{
-	push_front(deq, pop_back(deq));
+	if (ft_strlen(com) == 2)
+	{
+		if (ft_strncmp(com, "s", 1))
+			command_swap(a, b, com);
+		else if (ft_strncmp(com, "p", 1))
+			command_push(a, b, com);
+		else if (ft_strncmp(com, "r", 1))
+			command_rotate(a, b, com);
+		else
+			return (0);
+	}
+	else if (ft_strlen(com) == 3)
+	{
+		if (ft_strncmp(com, "rr", 2))
+			command_reverse_rotate(a, b, com);
+		else
+			return (0);
+	}
+	return (1);
 }
 
 void	print(t_deque *deq)
@@ -60,7 +57,7 @@ int		main(void)
 	push_back(a, 5);
 	push_back(a, 8);
 	print(a);
-	swap(a);
+	command(a, b, "sa");
 	print(a);
 	push(a, b);
 	push(a, b);

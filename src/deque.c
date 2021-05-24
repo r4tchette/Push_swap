@@ -1,4 +1,4 @@
-#include "deque.h"
+#include "pushswap.h"
 
 void	delete_node(t_node *node)
 {

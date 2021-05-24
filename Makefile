@@ -1,37 +1,44 @@
-SRC	=		./src/main.c \
-			./src/deque.c
+SRC_CHECKER =	./src/checker.c \
+				./src/deque.c \
+				./src/swap.c \
+				./src/push.c \
+				./src/rotate.c \
+				./src/reverse_rotate.c \
+				./src/ft_strlen.c \
+				./src/ft_strncmp.c
 
-B_SRC =		./src/main.c \
-			./src/deque.c
+SRC_PUSHSWAP =	./src/pushswap.c \
+				./src/deque.c \
+				./src/swap.c \
+				./src/push.c \
+				./src/rotate.c \
+				./src/reverse_rotate.c \
+				./src/ft_strlen.c \
+				./src/ft_strncmp.c
 
-OBJ =		$(SRC:.c=.o)
-B_OBJ =		$(B_SRC:.c=.o)
+OBJ_CHECKER =	$(SRC_CHECKER:.c=.o)
+OBJ_PUSHSWAP =	$(SRC_PUSHSWAP:.c=.o)
 
-NAME =		push_swap
+CHECKER =	checker
+PUSHSWAP =	push_swap
 CC =		gcc
 CFLAG =		-Wall -Werror -Wextra
 INC =		-I.
 RM =		rm -rf
 
-ifdef WITH_BONUS
-	OBJ_SELECTED = $(B_OBJ)
-else
-	OBJ_SELECTED = $(OBJ)
-endif
+$(CHECKER):
+	$(CC) $(CFLAG) $(SRC_CHECKER) -o $(CHECKER)
 
-$(NAME):	$(OBJ)
-	$(CC) $(CFLAG) -o $(NAME) $(SRC)
+$(PUSHSWAP):
+	$(CC) $(CFLAG) $(SRC_PUSHSWAP) -o $(PUSHSWAP)
 
-all:		$(NAME)
-
-bonus:
-	$(MAKE) WITH_BONUS=1 $(NAME)
+all:	$(CHECKER) $(PUSHSWAP)
 
 clean:
-	$(RM) $(OBJ) $(B_OBJ)
+	$(RM) $(OBJ_CHECKER) $(OBJ_PUSHSWAP)
 
 fclean:		clean
-	$(RM) $(NAME)
+	$(RM) $(CHECKER) $(PUSHSWAP)
 
 re:			fclean all
 
