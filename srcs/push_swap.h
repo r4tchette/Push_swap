@@ -39,6 +39,8 @@ int					is_integer(char *str);
 int					ft_strequ(char *s1, char *s2, int len);
 int					is_sorted(t_deque *a);
 int					is_duplicated(t_deque *deq, int value);
-void				print_stack(t_deque *deq);
+
+t_deque				*init_deque(int ac, char **av);
+int					print_error(t_deque **a, t_deque **b);
 
 #endif

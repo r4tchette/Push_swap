@@ -8,7 +8,8 @@ SRCS_CHECKER = srcs/checker.c \
 		srcs/reverse_rotate.c \
 		srcs/rotate.c \
 		srcs/swap.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/ft_strequ.c
 
 SRCS_PUSH_SWAP = srcs/push_swap.c \
 		srcs/deque.c \
@@ -16,7 +17,8 @@ SRCS_PUSH_SWAP = srcs/push_swap.c \
 		srcs/reverse_rotate.c \
 		srcs/rotate.c \
 		srcs/swap.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/ft_strequ.c
 
 OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)
 OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP:.c=.o)

@@ -26,24 +26,6 @@ int		is_integer(char *str)
 	return (1);
 }
 
-int		ft_strequ(char *s1, char *s2, int len)
-{
-	int	i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return (0);
-	if (ft_strlen(s1) == 0 || ft_strlen(s2) == 0)
-		return (0);
-	while (i < len)
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int		is_sorted(t_deque *a)
 {
 	t_node	*node;
@@ -60,7 +42,7 @@ int		is_sorted(t_deque *a)
 	return (1);
 }
 
-int	is_duplicated(t_deque *deq, int value)
+int		is_duplicated(t_deque *deq, int value)
 {
 	t_node	*node;
 
@@ -78,15 +60,44 @@ int	is_duplicated(t_deque *deq, int value)
 	return (0);
 }
 
-void	print_stack(t_deque *deq)
+int		print_error(t_deque **a, t_deque **b)
 {
-	t_node	*node;
-
-	node = deq->front;
-	while (node)
+	if (*a)
 	{
-		ft_printf("%d ", node->value);
-		node = node->next;
+		free(*a);
+		*a = NULL;
 	}
-	ft_printf("\n");
+	if (*b)
+	{
+		free(*b);
+		*b = NULL;
+	}
+	ft_printf("Error\n");
+	return (0);
 }
+
+t_deque	*init_deque(int ac, char **av)
+{
+	t_deque	*new_deque;
+	int		i;
+
+	new_deque = malloc(sizeof(t_deque));
+	if (!new_deque)
+		return (NULL);
+	new_deque->front = NULL;
+	new_deque->back = NULL;
+	new_deque->length = 0;
+	i = 1;
+	while (i < ac)
+	{
+		if (!is_integer(av[i]) || is_duplicated(new_deque, ft_atoi(av[i])))
+		{
+			free(new_deque);
+			return (NULL);
+		}
+		push_back(new_deque, ft_atoi(av[i]));
+		i++;
+	}
+	return (new_deque);
+}
+

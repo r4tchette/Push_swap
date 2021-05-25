@@ -26,46 +26,17 @@ int		command(t_deque *a, t_deque *b, char *com)
 	return (ret);
 }
 
-int		print_error(t_deque **a, t_deque **b)
+void	print_stack(t_deque *deq)
 {
-	if (*a)
-	{
-		free(*a);
-		*a = NULL;
-	}
-	if (*b)
-	{
-		free(*b);
-		*b = NULL;
-	}
-	ft_printf("Error\n");
-	return (0);
-}
+	t_node	*node;
 
-
-t_deque	*init_deque(int ac, char **av)
-{
-	t_deque	*new_deque;
-	int		i;
-
-	new_deque = malloc(sizeof(t_deque));
-	if (!new_deque)
-		return (NULL);
-	new_deque->front = NULL;
-	new_deque->back = NULL;
-	new_deque->length = 0;
-	i = 1;
-	while (i < ac)
+	node = deq->front;
+	while (node)
 	{
-		if (!is_integer(av[i]) || is_duplicated(new_deque, ft_atoi(av[i])))
-		{
-			free(new_deque);
-			return (NULL);
-		}
-		push_back(new_deque, ft_atoi(av[i]));
-		i++;
+		ft_printf("%d ", node->value);
+		node = node->next;
 	}
-	return (new_deque);
+	ft_printf("\n");
 }
 
 void	check_stack(t_deque *a, t_deque *b)
