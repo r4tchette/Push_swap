@@ -1,45 +1,54 @@
-SRC_CHECKER =	./src/checker.c \
-				./src/deque.c \
-				./src/swap.c \
-				./src/push.c \
-				./src/rotate.c \
-				./src/reverse_rotate.c \
-				./src/ft_strlen.c \
-				./src/ft_strncmp.c
+CHECKER = checker
+PUSH_SWAP = push_swap
+LIB = libft/libft.a
 
-SRC_PUSHSWAP =	./src/pushswap.c \
-				./src/deque.c \
-				./src/swap.c \
-				./src/push.c \
-				./src/rotate.c \
-				./src/reverse_rotate.c \
-				./src/ft_strlen.c \
-				./src/ft_strncmp.c
+SRCS_CHECKER = srcs/checker.c \
+		srcs/deque.c \
+		srcs/push.c \
+		srcs/reverse_rotate.c \
+		srcs/rotate.c \
+		srcs/swap.c \
+		srcs/utils.c
 
-OBJ_CHECKER =	$(SRC_CHECKER:.c=.o)
-OBJ_PUSHSWAP =	$(SRC_PUSHSWAP:.c=.o)
+SRCS_PUSH_SWAP = srcs/push_swap.c \
+		srcs/deque.c \
+		srcs/push.c \
+		srcs/reverse_rotate.c \
+		srcs/rotate.c \
+		srcs/swap.c \
+		srcs/utils.c
 
-CHECKER =	checker
-PUSHSWAP =	push_swap
-CC =		gcc
-CFLAG =		-Wall -Werror -Wextra
-INC =		-I.
-RM =		rm -rf
+OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)
+OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP:.c=.o)
+INCLUDES += -I libft/libft
+INCLUDES += -I libft/get_next_line
+INCLUDES += -I libft/libftprintf
+CFLAGS = -Wall -Werror -Wextra
+CC = gcc
+RM = rm -rf
 
-$(CHECKER):
-	$(CC) $(CFLAG) $(SRC_CHECKER) -o $(CHECKER)
+.c.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(PUSHSWAP):
-	$(CC) $(CFLAG) $(SRC_PUSHSWAP) -o $(PUSHSWAP)
+all: $(CHECKER) $(PUSH_SWAP)
 
-all:	$(CHECKER) $(PUSHSWAP)
+$(CHECKER): $(OBJS_CHECKER) $(LIB)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
+
+$(PUSH_SWAP): $(OBJS_PUSH_SWAP) $(LIB)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
+
+$(LIB):
+	make -C libft/
 
 clean:
-	$(RM) $(OBJ_CHECKER) $(OBJ_PUSHSWAP)
+	make clean -C libft/
+	$(RM) $(OBJS_CHECKER) $(OBJS_PUSH_SWAP)
 
-fclean:		clean
-	$(RM) $(CHECKER) $(PUSHSWAP)
+fclean: clean
+	make fclean -C libft/
+	$(RM) $(CHECKER) $(PUSH_SWAP)
 
-re:			fclean all
+re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: clean fclean re all

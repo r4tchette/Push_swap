@@ -1,4 +1,4 @@
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	reverse_rotate(t_deque *deq)
 {
@@ -7,11 +7,11 @@ void	reverse_rotate(t_deque *deq)
 
 int		command_reverse_rotate(t_deque *a, t_deque *b, char *com)
 {
-	if (ft_strncmp(com, "rra", 3))
+	if (ft_strequ(com, "rra", 3))
 		reverse_rotate(a);
-	else if (ft_strncmp(com, "rrb", 3))
+	else if (ft_strequ(com, "rrb", 3))
 		reverse_rotate(b);
-	else if (ft_strncmp(com, "rrr", 3))
+	else if (ft_strequ(com, "rrr", 3))
 	{
 		reverse_rotate(a);
 		reverse_rotate(b);

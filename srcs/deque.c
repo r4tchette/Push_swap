@@ -1,6 +1,6 @@
-#include "pushswap.h"
+#include "push_swap.h"
 
-void	delete_node(t_node *node)
+static void	delete_node(t_node *node)
 {
 	node->next = NULL;
 	node->prev = NULL;
@@ -8,11 +8,13 @@ void	delete_node(t_node *node)
 	free(node);
 }
 
-void	push_back(t_deque *deq, int value)
+int			push_back(t_deque *deq, int value)
 {
 	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
+	if(!new_node)
+		return (0);
 	new_node->value = value;
 	new_node->prev = deq->back;
 	new_node->next = NULL;
@@ -22,13 +24,16 @@ void	push_back(t_deque *deq, int value)
 		deq->back->next = new_node;
 	deq->back = new_node;
 	deq->length += 1;
+	return (1);
 }
 
-void	push_front(t_deque *deq, int value)
+int			push_front(t_deque *deq, int value)
 {
 	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		return (0);
 	new_node->value = value;
 	new_node->next = deq->front;
 	new_node->prev = NULL;
@@ -38,17 +43,17 @@ void	push_front(t_deque *deq, int value)
 		deq->front->prev = new_node;
 	deq->front = new_node;
 	deq->length += 1;
+	return (1);
 }
 
-int		pop_back(t_deque *deq)
+int			pop_back(t_deque *deq)
 {
 	t_node	*back;
 	int		value;
 
 	if (deq->length == 0)
 	{
-		write(1, "deque is empty\n", 15);
-		exit(-1);
+		return (0);
 	}
 	back = deq->back;
 	value = back->value;
@@ -62,15 +67,14 @@ int		pop_back(t_deque *deq)
 	return (value);
 }
 
-int		pop_front(t_deque *deq)
+int			pop_front(t_deque *deq)
 {
 	t_node	*front;
 	int		value;
 
 	if (deq->length == 0)
 	{
-		write(1, "deque is empty\n", 15);
-		exit(-1);
+		return (0);
 	}
 	front = deq->front;
 	value = front->value;

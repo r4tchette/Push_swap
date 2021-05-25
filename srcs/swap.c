@@ -1,4 +1,4 @@
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	swap(t_deque *deq)
 {
@@ -13,11 +13,11 @@ void	swap(t_deque *deq)
 
 int		command_swap(t_deque *a, t_deque *b, char *com)
 {
-	if (ft_strncmp(com, "sa", 2))
+	if (ft_strequ(com, "sa", 2))
 		swap(a);
-	else if (ft_strncmp(com, "sb", 2))
+	else if (ft_strequ(com, "sb", 2))
 		swap(b);
-	else if (ft_strncmp(com, "ss", 2))
+	else if (ft_strequ(com, "ss", 2))
 	{
 		swap(a);
 		swap(b);
