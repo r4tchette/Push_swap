@@ -35,12 +35,21 @@ int					command_push(t_deque *a, t_deque *b, char *com);
 int					command_rotate(t_deque *a, t_deque *b, char *com);
 int					command_reverse_rotate(t_deque *a, t_deque *b, char *com);
 
-int					is_integer(char *str);
 int					ft_strequ(char *s1, char *s2, int len);
+
+int					print_error(t_deque **a, t_deque **b);
+void				print_stack(t_deque *deq);
+void				check_stack(t_deque *a, t_deque *b);
+
+int					is_integer(char *str);
 int					is_sorted(t_deque *a);
 int					is_duplicated(t_deque *deq, int value);
-
 t_deque				*init_deque(int ac, char **av);
-int					print_error(t_deque **a, t_deque **b);
+int					command(t_deque *a, t_deque *b, char *com);
+
+int					bigger(int a, int b);
+int					less(int a, int b);
+int					find_max(t_deque *deq, int len);
+int					find_min(t_deque *deq, int len);
 
 #endif

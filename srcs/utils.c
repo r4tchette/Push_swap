@@ -60,22 +60,6 @@ int		is_duplicated(t_deque *deq, int value)
 	return (0);
 }
 
-int		print_error(t_deque **a, t_deque **b)
-{
-	if (*a)
-	{
-		free(*a);
-		*a = NULL;
-	}
-	if (*b)
-	{
-		free(*b);
-		*b = NULL;
-	}
-	ft_printf("Error\n");
-	return (0);
-}
-
 t_deque	*init_deque(int ac, char **av)
 {
 	t_deque	*new_deque;
@@ -101,3 +85,28 @@ t_deque	*init_deque(int ac, char **av)
 	return (new_deque);
 }
 
+int		command(t_deque *a, t_deque *b, char *com)
+{
+	int	ret;
+
+	ret = 0;
+	if (ft_strlen(com) == 2)
+	{
+		if (ft_strequ(com, "s", 1))
+			ret = command_swap(a, b, com);
+		else if (ft_strequ(com, "p", 1))
+			ret = command_push(a, b, com);
+		else if (ft_strequ(com, "r", 1))
+			ret = command_rotate(a, b, com);
+		else
+			ret = 0;
+	}
+	else if (ft_strlen(com) == 3)
+	{
+		if (ft_strequ(com, "rr", 2))
+			ret = command_reverse_rotate(a, b, com);
+		else
+			ret = 0;
+	}
+	return (ret);
+}
