@@ -41,6 +41,8 @@ void	merge(t_deque *a, t_deque *b, int s1, int s2)
 {
 	int	i;
 
+	command_iteration(a, b, "pb", s1);
+	/*
 	i = 0;
 	while (i < s1)
 	{
@@ -48,6 +50,7 @@ void	merge(t_deque *a, t_deque *b, int s1, int s2)
 		ft_printf("pb\n");
 		i++;
 	}
+	*/
 	i = 0;
 	while (i < s2)
 	{
@@ -103,9 +106,10 @@ void	merge(t_deque *a, t_deque *b, int s1, int s2)
 		i++;
 	}
 */
-	ft_printf("\n----------merged----------\n");
-	ft_printf("a : "); print_stack(a);
-	ft_printf("b : "); print_stack(b);
+
+//	ft_printf("\n----------merged----------\n");
+//	ft_printf("a : "); print_stack(a);
+//s	ft_printf("b : "); print_stack(b);
 }
 
 void	loop_to_merge(t_deque *a, t_deque *b)
@@ -140,32 +144,34 @@ int		main(int ac, char **av)
 	t_deque	*a;
 	t_deque	*b;
 
-	if (ac < 2)
+	if (ac == 1)
 		return (0);
 	a = init_deque(ac, av);
 	if (!a)
 		return (print_error(&a, &b));
 	b = init_deque(0, NULL);
+
 	if (!b)
 		return (print_error(&a, &b));
 
-	ft_printf("length : %d\n", a->length);
+//	ft_printf("length : %d\n", a->length);
 
-	ft_printf("\n----------initial----------\n");
-	ft_printf("a : "); print_stack(a);
-	ft_printf("b : "); print_stack(b);
+//	ft_printf("\n----------initial----------\n");
+//	ft_printf("a : "); print_stack(a);
+//	ft_printf("b : "); print_stack(b);
 
 	preprocess(a, b);
 
-	ft_printf("\n----------swapped----------\n");
-	ft_printf("a : "); print_stack(a);
-	ft_printf("b : "); print_stack(b);
+//	ft_printf("\n----------swapped----------\n");
+//	ft_printf("a : "); print_stack(a);
+//	ft_printf("b : "); print_stack(b);
 
 	loop_to_merge(a, b);
 
-	ft_printf("\n----------merged----------\n");
-	ft_printf("a : "); print_stack(a);
-	ft_printf("b : "); print_stack(b);
-
+//	ft_printf("\n----------merged----------\n");
+//	ft_printf("a : "); print_stack(a);
+//	ft_printf("b : "); print_stack(b);
+	free(a);
+	free(b);
 	return (0);
 }

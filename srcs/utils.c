@@ -64,6 +64,7 @@ t_deque	*init_deque(int ac, char **av)
 {
 	t_deque	*new_deque;
 	int		i;
+	char	**arg;
 
 	new_deque = malloc(sizeof(t_deque));
 	if (!new_deque)
@@ -71,17 +72,28 @@ t_deque	*init_deque(int ac, char **av)
 	new_deque->front = NULL;
 	new_deque->back = NULL;
 	new_deque->length = 0;
-	i = 1;
-	while (i < ac)
+	if (ac == 0)
+		return (new_deque);
+	if (ac == 2)
+		arg = ft_split(av[1], ' ');
+	else
+		arg = av + 1;
+	i = 0;
+	while (arg[i])
 	{
-		if (!is_integer(av[i]) || is_duplicated(new_deque, ft_atoi(av[i])))
+		if (!is_integer(arg[i]) || is_duplicated(new_deque, ft_atoi(arg[i])))
 		{
 			free(new_deque);
+			if (ac == 2)
+				free(arg);
 			return (NULL);
 		}
-		push_back(new_deque, ft_atoi(av[i]));
+		push_back(new_deque, ft_atoi(arg[i]));
+
 		i++;
 	}
+	if (ac == 2)
+		free(arg);
 	return (new_deque);
 }
 
