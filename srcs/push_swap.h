@@ -51,5 +51,6 @@ int					bigger(int a, int b);
 int					less(int a, int b);
 int					find_max(t_deque *deq, int len);
 int					find_min(t_deque *deq, int len);
+int					find_position(t_deque *deq, int len, int value);
 
 #endif

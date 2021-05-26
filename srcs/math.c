@@ -49,3 +49,20 @@ int	find_min(t_deque *deq, int len)
 	}
 	return (min_value);
 }
+
+int	find_position(t_deque *deq, int len, int value)
+{
+	t_node	*node;
+	int		i;
+
+	node = deq->front;
+	i = 0;
+	while (i < len && node)
+	{
+		if (value == node->value)
+			return (i);
+		node = node->next;
+		i++;
+	}
+	return (-1);
+}
