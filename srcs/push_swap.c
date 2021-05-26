@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:26 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/26 21:51:28 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void	sort_list(t_deque *a, t_deque *b, int size)
 		target = find_near_min(a, size);
 		if (b->length > 1)
 		{
-			if (target > find_max(b, b->length) || target < find_min(b, b->length))
-				rotate_shortest(a, b, find_position(b, b->length, find_max(b, b->length)));
+			if (target > find_max(b, b->length) \
+			|| target < find_min(b, b->length))
+				rotate_shortest(a, b, \
+				find_position(b, b->length, find_max(b, b->length)));
 			else
 				rotate_b(a, b, target);
 		}
