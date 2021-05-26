@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:46:57 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:25 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 00:55:02 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		print_error(t_deque **a, t_deque **b)
 		free(*b);
 		*b = NULL;
 	}
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	return (0);
 }
 

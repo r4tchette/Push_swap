@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:51:28 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 00:50:05 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int		find_near_min(t_deque *a, int size)
 	node = a->front;
 	pos = 0;
 	min = node->value;
-
 	range = (a->length < 48) ? 6 : a->length / 8;
-	if (size > 400)
+	if (size > 100)
 		//range = 16;
-		range = (a->length < 336) ? 12 : a->length / 28;
+		range = (a->length < 288) ? 12 : a->length / 24;
+		//range = (a->length < 300) ? 12 : a->length / 25;
 	while (node)
 	{
 		if (pos < range || pos > a->length - range)
@@ -71,6 +71,106 @@ void	sort_list(t_deque *a, t_deque *b, int size)
 		if (b->front->value == find_min(b, b->length))
 			command_iteration(a, b, "rb", 1);
 	}
+	command_iteration(a, b, "pa", b->length);
+}
+
+void	sort_three(t_deque *a, t_deque *b)
+{
+	if (find_min(a, a->length) == a->front->value && \
+		find_max(a, a->length) == a->front->next->value)
+	{
+		command_iteration(a, b, "sa", 1);
+		command_iteration(a, b, "ra", 1);
+	}
+	else if (find_min(a, a->length) == a->front->next->value && \
+		find_max(a, a->length) == a->back->value)
+		command_iteration(a, b, "sa", 1);
+	else if (find_min(a, a->length) == a->back->value && \
+		find_max(a, a->length) == a->front->next->value)
+		command_iteration(a, b, "rra", 1);
+	else if (find_min(a, a->length) == a->front->next->value && \
+		find_max(a, a->length) == a->front->value)
+		command_iteration(a, b, "ra", 1);
+	else if (find_min(a, a->length) == a->back->value && \
+		find_max(a, a->length) == a->front->value)
+	{
+		command_iteration(a, b, "sa", 1);
+		command_iteration(a, b, "rra", 1);
+	}
+}
+
+void	sort_five(t_deque *a, t_deque *b)
+{
+	int	cnt;
+
+	command_iteration(a, b, "pb", 2);
+	sort_three(a, b);
+	if (b->front->value > b->back->value)
+		command_iteration(a, b, "sb", 1);
+	if (b->front->value < find_min(a, a->length))
+		command_iteration(a, b, "pa", 1);
+	cnt = 0;
+	while (cnt < a->length)
+	{
+		if (b->length > 0)
+			if (a->back->value < b->front->value && \
+			b->front->value < a->front->value)
+				command_iteration(a, b, "pa", 1);
+		command_iteration(a, b, "ra", 1);
+		cnt++;
+	}
+	if (b->length > 0)
+		command_iteration(a, b, "pa", b->length);
+	while (a->front->value != find_min(a, a->length))
+		command_iteration(a, b, "ra", 1);
+
+	/*
+
+	if (b->front->value > b->back->value)
+		command_iteration(a, b, "sb", 1);
+	cnt = a->length;
+	while (cnt > 0)
+	{
+		if (a->back->value < b->front->value && b->front->value < a->front->value)
+		{
+			command_iteration(a, b, "pa", 1);
+			cnt++;
+			continue ;
+		}
+		command_iteration(a, b, "ra", 1);
+		cnt--;
+	}
+	if (b->front->value < find_min(a, a->length))
+		command_iteration(a, b, "pa", 1);
+	if (b->front->value > find_max(a, a->length))
+	{
+		command_iteration(a, b, "pa", 1);
+		command_iteration(a, b, "ra", 1);
+	}
+	*/
+
+/*
+	while (a->length < 5)
+	{
+		if (find_min(a, a->length) > b->front->value)
+			command_iteration(a, b, "pa", 1);
+		if (find_max(a, a->length) < b->front->value)
+		{
+			command_iteration(a, b, "pa", 1);
+		//	command_iteration(a, b, "ra", 1);
+		}
+		if (a->back->value < b->front->value && b->front->value < a->front->value)
+			command_iteration(a, b, "pa", 1);
+		else if (a->front->value < b->front->value && b->front->value < a->front->next->value)
+		{
+			command_iteration(a, b, "ra", 1);
+		//	command_iteration(a, b, "pa", 1);
+		}
+		if (is_sorted(a) && a->length == 5)
+			break ;
+		command_iteration(a, b, "ra", 1);
+	}
+	*/
 }
 
 int		main(int ac, char **av)
@@ -86,7 +186,14 @@ int		main(int ac, char **av)
 	b = init_deque(0, NULL);
 	if (!b)
 		return (print_error(&a, &b));
-	sort_list(a, b, a->length);
+	if (is_sorted(a))
+		return (0);
+	if (a->length == 3)
+		sort_three(a, b);
+	else if (a->length == 5)
+		sort_five(a, b);
+	else
+		sort_list(a, b, a->length);
 	free(a);
 	free(b);
 	return (0);
