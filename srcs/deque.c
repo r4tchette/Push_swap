@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   deque.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/26 21:46:43 by yeonkim           #+#    #+#             */
+/*   Updated: 2021/05/26 21:47:21 by yeonkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	delete_node(t_node *node)
@@ -52,9 +64,7 @@ int			pop_back(t_deque *deq)
 	int		value;
 
 	if (deq->length == 0)
-	{
 		return (0);
-	}
 	back = deq->back;
 	value = back->value;
 	deq->back = deq->back->prev;
@@ -73,9 +83,7 @@ int			pop_front(t_deque *deq)
 	int		value;
 
 	if (deq->length == 0)
-	{
 		return (0);
-	}
 	front = deq->front;
 	value = front->value;
 	deq->front = deq->front->next;

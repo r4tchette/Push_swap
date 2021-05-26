@@ -46,11 +46,17 @@ int					is_sorted(t_deque *a);
 int					is_duplicated(t_deque *deq, int value);
 t_deque				*init_deque(int ac, char **av);
 int					command(t_deque *a, t_deque *b, char *com);
+void				command_iteration(t_deque *a, t_deque *b, char *cmd, int it);
 
 int					bigger(int a, int b);
 int					less(int a, int b);
 int					find_max(t_deque *deq, int len);
 int					find_min(t_deque *deq, int len);
 int					find_position(t_deque *deq, int len, int value);
+int					get_position(t_deque *a, int value);
+
+void				rotate_shortest(t_deque *a, t_deque *b, int pos);
+void				rotate_b(t_deque *a, t_deque *b, int value);
+
 
 #endif

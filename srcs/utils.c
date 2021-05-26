@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/26 21:47:17 by yeonkim           #+#    #+#             */
+/*   Updated: 2021/05/26 21:47:37 by yeonkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		is_integer(char *str)
@@ -21,7 +33,7 @@ int		is_integer(char *str)
 	}
 	num *= sign;
 	if (*str != '\0' || ft_strlen(str) > 11 \
-	|| num > 2147483647 || num < -2147483648)
+		|| num > 2147483647 || num < -2147483648)
 		return (0);
 	return (1);
 }
@@ -60,10 +72,29 @@ int		is_duplicated(t_deque *deq, int value)
 	return (0);
 }
 
+int		push_deque(char **arg, t_deque *new_deque, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!is_integer(arg[i]) || is_duplicated(new_deque, ft_atoi(arg[i])))
+		{
+			free(new_deque);
+			if (ac == 2)
+				free(arg);
+			return (0);
+		}
+		push_back(new_deque, ft_atoi(arg[i]));
+		i++;
+	}
+	return (1);
+}
+
 t_deque	*init_deque(int ac, char **av)
 {
 	t_deque	*new_deque;
-	int		i;
 	char	**arg;
 
 	new_deque = malloc(sizeof(t_deque));
@@ -78,47 +109,9 @@ t_deque	*init_deque(int ac, char **av)
 		arg = ft_split(av[1], ' ');
 	else
 		arg = av + 1;
-	i = 0;
-	while (arg[i])
-	{
-		if (!is_integer(arg[i]) || is_duplicated(new_deque, ft_atoi(arg[i])))
-		{
-			free(new_deque);
-			if (ac == 2)
-				free(arg);
-			return (NULL);
-		}
-		push_back(new_deque, ft_atoi(arg[i]));
-
-		i++;
-	}
+	if (push_deque(arg, new_deque, ac) == 0)
+		return (NULL);
 	if (ac == 2)
 		free(arg);
 	return (new_deque);
-}
-
-int		command(t_deque *a, t_deque *b, char *com)
-{
-	int	ret;
-
-	ret = 0;
-	if (ft_strlen(com) == 2)
-	{
-		if (ft_strequ(com, "s", 1))
-			ret = command_swap(a, b, com);
-		else if (ft_strequ(com, "p", 1))
-			ret = command_push(a, b, com);
-		else if (ft_strequ(com, "r", 1))
-			ret = command_rotate(a, b, com);
-		else
-			ret = 0;
-	}
-	else if (ft_strlen(com) == 3)
-	{
-		if (ft_strequ(com, "rr", 2))
-			ret = command_reverse_rotate(a, b, com);
-		else
-			ret = 0;
-	}
-	return (ret);
 }

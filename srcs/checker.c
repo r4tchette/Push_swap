@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/26 21:46:37 by yeonkim           #+#    #+#             */
+/*   Updated: 2021/05/26 21:47:20 by yeonkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		main(int ac, char **av)
@@ -14,14 +26,10 @@ int		main(int ac, char **av)
 	b = init_deque(0, NULL);
 	if (!b)
 		return (print_error(&a, &b));
-	//ft_printf("a: "); print_stack(a);
-	//ft_printf("b: "); print_stack(b);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (!command(a, b, line))
 			return (print_error(&a, &b));
-		//ft_printf("a: "); print_stack(a);
-		//ft_printf("b: "); print_stack(b);
 	}
 	check_stack(a, b);
 	free(a);
