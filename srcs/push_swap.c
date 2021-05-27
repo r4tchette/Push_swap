@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 14:49:42 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 15:01:27 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ int		find_near_min(t_deque *a, int size)
 	node = a->front;
 	pos = 0;
 	min = node->value;
-	range = (a->length < 48) ? 6 : a->length / 8;
+	range = (a->length < 30) ? 6 : a->length / 5;
 	if (size > 100)
-		//range = 16;
 		range = (a->length < 288) ? 12 : a->length / 24;
-		//range = (a->length < 300) ? 12 : a->length / 25;
 	while (node)
 	{
 		if (pos < range || pos > a->length - range)
