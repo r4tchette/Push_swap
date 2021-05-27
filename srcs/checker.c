@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:46:37 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:20 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 15:11:09 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int		main(int ac, char **av)
 		return (print_error(&a, &b));
 	b = init_deque(0, NULL);
 	if (!b)
+	{
+		free(a);
 		return (print_error(&a, &b));
+	}
 	while (get_next_line(0, &line) == 1)
 	{
 		if (!command(a, b, line))
