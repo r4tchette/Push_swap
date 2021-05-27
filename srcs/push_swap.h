@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 14:06:41 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 14:08:59 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 15:04:07 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,11 @@ int					get_position(t_deque *a, int value);
 
 void				rotate_shortest(t_deque *a, t_deque *b, int pos);
 void				rotate_b(t_deque *a, t_deque *b, int value);
+
+void				pop_value(t_deque *a, t_deque *b, int value);
+int					find_near_min(t_deque *a, int size);
+void				sort_list(t_deque *a, t_deque *b, int size);
+void				sort_three(t_deque *a, t_deque *b);
+void				sort_five(t_deque *a, t_deque *b);
 
 #endif
