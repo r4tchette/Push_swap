@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 15:04:36 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 15:09:29 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int		main(int ac, char **av)
 		return (print_error(&a, &b));
 	b = init_deque(0, NULL);
 	if (!b)
+	{
+		free(a);
 		return (print_error(&a, &b));
+	}
 	if (is_sorted(a))
 		return (0);
 	if (a->length == 3)
