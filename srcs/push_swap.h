@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 14:06:41 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 15:04:07 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/28 00:23:33 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void				sort_list(t_deque *a, t_deque *b, int size);
 void				sort_three(t_deque *a, t_deque *b);
 void				sort_five(t_deque *a, t_deque *b);
 
+void				free_deque(t_deque *deq);
 #endif

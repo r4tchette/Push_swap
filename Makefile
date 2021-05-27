@@ -11,7 +11,8 @@ SRCS_CHECKER = srcs/checker.c \
 		srcs/utils.c \
 		srcs/print.c \
 		srcs/ft_strequ.c \
-		srcs/command.c
+		srcs/command.c \
+		srcs/memory.c
 
 SRCS_PUSH_SWAP = srcs/push_swap.c \
 		srcs/deque.c \
@@ -25,7 +26,8 @@ SRCS_PUSH_SWAP = srcs/push_swap.c \
 		srcs/math.c \
 		srcs/find.c \
 		srcs/command.c \
-		srcs/sort.c
+		srcs/sort.c \
+		srcs/memory.c
 
 OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)
 OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP:.c=.o)

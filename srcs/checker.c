@@ -6,7 +6,7 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:46:37 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 15:11:09 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/28 00:25:16 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int ac, char **av)
 	b = init_deque(0, NULL);
 	if (!b)
 	{
-		free(a);
+		free_deque(a);
 		return (print_error(&a, &b));
 	}
 	while (get_next_line(0, &line) == 1)
@@ -35,7 +35,7 @@ int		main(int ac, char **av)
 			return (print_error(&a, &b));
 	}
 	check_stack(a, b);
-	free(a);
-	free(b);
+	free_deque(a);
+	free_deque(b);
 	return (0);
 }
