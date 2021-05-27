@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 14:10:10 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:47:30 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,16 +113,19 @@ void	sort_five(t_deque *a, t_deque *b)
 	while (cnt < a->length)
 	{
 		if (b->length > 0)
+		{
 			if (a->back->value < b->front->value && \
 			b->front->value < a->front->value)
 				command_iteration(a, b, "pa", 1);
+		}
 		command_iteration(a, b, "ra", 1);
 		cnt++;
 	}
-	if (b->length > 0)
-		command_iteration(a, b, "pa", b->length);
-	while (a->front->value != find_min(a, a->length))
+	while (b->length > 0)
+	{
+		command_iteration(a, b, "pa", 1);
 		command_iteration(a, b, "ra", 1);
+	}
 }
 
 int		main(int ac, char **av)
