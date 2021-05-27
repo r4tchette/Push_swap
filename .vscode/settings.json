@@ -4,6 +4,8 @@
 		"checker.h": "c",
 		"pushswap.h": "c",
 		"libft.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"unistd.h": "c",
+		"stdlib.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:03 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:27 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:09:14 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ int		command_push(t_deque *a, t_deque *b, char *com)
 		return (0);
 	return (1);
 }
-

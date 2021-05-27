@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:17 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:51:53 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:09:24 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		is_duplicated(t_deque *deq, int value)
 {
 	t_node	*node;
 
-	if(deq->length == 0)
+	if (deq->length == 0)
 		return (0);
 	node = deq->front;
 	while (node != deq->back)

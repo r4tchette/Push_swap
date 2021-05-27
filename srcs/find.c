@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:46:48 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:22 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:07:50 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	find_position(t_deque *deq, int len, int value)
 	return (-1);
 }
 
-int		get_position(t_deque *a, int value)
+int	get_position(t_deque *a, int value)
 {
 	t_node	*node;
 	int		pos;

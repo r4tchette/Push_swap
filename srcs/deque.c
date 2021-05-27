@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deque.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:46:43 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/26 21:47:21 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:07:06 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			push_back(t_deque *deq, int value)
 	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
-	if(!new_node)
+	if (!new_node)
 		return (0);
 	new_node->value = value;
 	new_node->prev = deq->back;

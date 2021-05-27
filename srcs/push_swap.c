@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonkim <yeonkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/27 00:50:05 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/27 14:10:10 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,54 +123,6 @@ void	sort_five(t_deque *a, t_deque *b)
 		command_iteration(a, b, "pa", b->length);
 	while (a->front->value != find_min(a, a->length))
 		command_iteration(a, b, "ra", 1);
-
-	/*
-
-	if (b->front->value > b->back->value)
-		command_iteration(a, b, "sb", 1);
-	cnt = a->length;
-	while (cnt > 0)
-	{
-		if (a->back->value < b->front->value && b->front->value < a->front->value)
-		{
-			command_iteration(a, b, "pa", 1);
-			cnt++;
-			continue ;
-		}
-		command_iteration(a, b, "ra", 1);
-		cnt--;
-	}
-	if (b->front->value < find_min(a, a->length))
-		command_iteration(a, b, "pa", 1);
-	if (b->front->value > find_max(a, a->length))
-	{
-		command_iteration(a, b, "pa", 1);
-		command_iteration(a, b, "ra", 1);
-	}
-	*/
-
-/*
-	while (a->length < 5)
-	{
-		if (find_min(a, a->length) > b->front->value)
-			command_iteration(a, b, "pa", 1);
-		if (find_max(a, a->length) < b->front->value)
-		{
-			command_iteration(a, b, "pa", 1);
-		//	command_iteration(a, b, "ra", 1);
-		}
-		if (a->back->value < b->front->value && b->front->value < a->front->value)
-			command_iteration(a, b, "pa", 1);
-		else if (a->front->value < b->front->value && b->front->value < a->front->next->value)
-		{
-			command_iteration(a, b, "ra", 1);
-		//	command_iteration(a, b, "pa", 1);
-		}
-		if (is_sorted(a) && a->length == 5)
-			break ;
-		command_iteration(a, b, "ra", 1);
-	}
-	*/
 }
 
 int		main(int ac, char **av)
