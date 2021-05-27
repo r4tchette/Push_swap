@@ -6,12 +6,11 @@
 /*   By: yeonkim <yeonkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:47:01 by yeonkim           #+#    #+#             */
-/*   Updated: 2021/05/28 00:27:24 by yeonkim          ###   ########.fr       */
+/*   Updated: 2021/05/28 00:29:10 by yeonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int		main(int ac, char **av)
 {
@@ -39,6 +38,5 @@ int		main(int ac, char **av)
 		sort_list(a, b, a->length);
 	free_deque(a);
 	free_deque(b);
-	while(1);
 	return (0);
 }
